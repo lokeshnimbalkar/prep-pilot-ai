@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Application } from "@prisma/client";
 import { getApplications } from "@/actions/applications";
 import { DeleteButton } from "@/components/dashboard/delete-button";
 
@@ -30,7 +31,7 @@ export default async function DashboardPage() {
         </p>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {applications.map((app) => (
+          {applications.map((app: Application) => (
             <div
               key={app.id}
               className="rounded-lg border bg-white p-4 shadow-sm"
