@@ -81,7 +81,7 @@ export function ApplicationForm({ application }: Props) {
         <label className="mb-1 block text-sm font-medium">Status</label>
         <select
           value={form.status}
-          onChange={(e) => setForm({ ...form, status: e.target.value })}
+          onChange={(e) => setForm({ ...form, status: e.target.value as ApplicationInput["status"] })}
           className="w-full rounded-md border px-3 py-2 text-sm"
         >
           <option value="APPLIED">Applied</option>
