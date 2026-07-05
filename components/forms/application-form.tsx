@@ -24,7 +24,7 @@ export function ApplicationForm({ application }: Props) {
   const [form, setForm] = useState<ApplicationInput>({
     companyName: application?.companyName ?? "",
     role: application?.role ?? "",
-    status: application?.status ?? "APPLIED",
+    status: (application?.status as ApplicationInput["status"]) ?? "APPLIED",
     interviewDate: application?.interviewDate
       ? new Date(application.interviewDate).toISOString().slice(0, 10)
       : "",
@@ -97,7 +97,7 @@ export function ApplicationForm({ application }: Props) {
         </label>
         <input
           type="date"
-          value={form.interviewDate}
+          value={form.interviewDate ?? ""}
           onChange={(e) => setForm({ ...form, interviewDate: e.target.value })}
           className="w-full rounded-md border px-3 py-2 text-sm"
         />
@@ -107,7 +107,7 @@ export function ApplicationForm({ application }: Props) {
         <label className="mb-1 block text-sm font-medium">Notes (optional)</label>
         <textarea
           maxLength={2000}
-          value={form.notes}
+          value={form.notes ?? ""}
           onChange={(e) => setForm({ ...form, notes: e.target.value })}
           rows={4}
           className="w-full rounded-md border px-3 py-2 text-sm"
